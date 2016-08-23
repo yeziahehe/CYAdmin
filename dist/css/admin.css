@@ -95,3 +95,15 @@ table.dataTable thead .sorting_desc:after {
     background-color: #fafafa;
     color: #666;
 }
+
+.form-group.has-error label {
+    color: #333;
+}
+
+.form-group.has-error input[type='text']:focus, .form-group.has-error input[type='text']:active {
+    border-color: #3c8dbc;
+}
+
+.form-group.has-error input[type='text']:focus+.help-block, .form-group.has-error input[type='text']:active+.help-block {
+  display:  none;
+}

@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="dist/css/ionicons.min.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- dropzone -->
+  <link rel="stylesheet" href="plugins/dropzone/basic.css">
+  <link rel="stylesheet" href="plugins/dropzone/dropzone.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -21,6 +26,7 @@
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
   <!-- 我的 -->
   <link rel="stylesheet" href="dist/css/admin.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -112,7 +118,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>管理员</p>
+          <p> 管理员</p>
           <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>
       </div>
@@ -129,21 +135,28 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">管理模块</li>
+        <li class="header"> 管理模块</li>
         <li>
           <a href="index.html">
-            <i class="fa fa-dashboard"></i> <span>控制台</span>
+            <i class="fa fa-dashboard"></i> <span> 控制台</span>
           </a>
         </li>
         <li>
           <a href="user.html">
-            <i class="fa fa-user"></i> <span>用户管理</span>
+            <i class="fa fa-user"></i> <span> 用户管理</span>
           </a>
         </li>
         <li class="active treeview">
           <a href="">
-            <i class="fa fa-file-text-o"></i> <span>表单管理</span>
+            <i class="fa fa-file-text-o"></i> <span> 表单管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="form.html"><i class="fa fa-circle-o"></i><small> 基础表单</small></a></li>
+            <li><a href="form_advanced.html"><i class="fa fa-circle-o"></i><small> 高级表单</small></a></li>
+          </ul>
         </li>
       </ul>
     </section>
@@ -159,7 +172,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href=""><i class="fa fa-dashboard"></i> 首页</a></li>
-        <li class="active">表单管理</li>
+        <li><a href=""><i class="fa fa-dashboard"></i> 表单管理</a></li>
+        <li class="active"> 基础表单</li>
       </ol>
     </section>
 
@@ -169,138 +183,138 @@
       <!-- general form elements disabled -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">基本表单</h3>
+          <h3 class="box-title"> 基本表单</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <form role="form">
-            <!-- text input -->
+          <form role="form" class="form-horizontal">
+            <!-- 输入框 -->
             <div class="form-group">
-              <label>Text</label>
-              <input type="text" class="form-control" placeholder="Enter ...">
+              <label class="col-sm-2 control-label">输入框</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="">
+              </div>
             </div>
+            <!-- 占位符 -->
             <div class="form-group">
-              <label>Text Disabled</label>
-              <input type="text" class="form-control" placeholder="Enter ..." disabled>
+              <label class="col-sm-2 control-label">占位符</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入文本">
+              </div>
+            </div>
+            <!-- 密码框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">密码框</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" placeholder="请输入密码">
+              </div>
             </div>
 
-            <!-- textarea -->
             <div class="form-group">
-              <label>Textarea</label>
-              <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+              <label class="col-sm-2 control-label">邮箱</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control" placeholder="请输入邮箱">
+              </div>
             </div>
+            <!-- 静态文本 -->
             <div class="form-group">
-              <label>Textarea Disabled</label>
-              <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
+              <label class="col-sm-2 control-label">静态文本</label>
+              <div class="col-sm-8">
+                <p class="form-control-static">email@example.com</p>
+              </div>
             </div>
-
-            <!-- input states -->
-            <div class="form-group has-success">
-              <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Input with success</label>
-              <input type="text" class="form-control" id="inputSuccess" placeholder="Enter ...">
-              <span class="help-block">Help block with success</span>
+            <!-- 不可编辑输入框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">不可编辑输入框</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="已输入文本不可编辑" disabled>
+              </div>
             </div>
-            <div class="form-group has-warning">
-              <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Input with
-                warning</label>
-              <input type="text" class="form-control" id="inputWarning" placeholder="Enter ...">
-              <span class="help-block">Help block with warning</span>
-            </div>
+            <!-- 必填输入框 -->
             <div class="form-group has-error">
-              <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Input with
-                error</label>
-              <input type="text" class="form-control" id="inputError" placeholder="Enter ...">
-              <span class="help-block">Help block with error</span>
-            </div>
-
-            <!-- checkbox -->
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox">
-                  Checkbox 1
-                </label>
-              </div>
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox">
-                  Checkbox 2
-                </label>
-              </div>
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" disabled>
-                  Checkbox disabled
-                </label>
+              <label class="col-sm-2 control-label">* 必填输入框</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="inputError" placeholder="请输入文本">
+                <span class="help-block">请输入文本</span>
               </div>
             </div>
-
-            <!-- radio -->
+            <!-- 单选框 -->
             <div class="form-group">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                  Option one is this and that&mdash;be sure to include why it's great
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Option two can be something else and selecting it will deselect option one
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                  Option three is disabled
-                </label>
+              <label class="col-sm-2 control-label">单选框</label>
+              <div class="col-sm-8">
+                <div class="radio"><label> <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 选项一 </label></div>
+                <div class="radio"><label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 选项二 </label></div>
+                <div class="radio"><label> <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> 选项三 </label></div>
               </div>
             </div>
+            <!-- 复选框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">复选框</label>
+              <div class="col-sm-8">
+                <div class="checkbox"><label><input type="checkbox" checked> 选项一 </label></div>
+                <div class="checkbox"><label><input type="checkbox"> 选项二 </label></div>
+                <div class="checkbox"><label><input type="checkbox" disabled> 选项三 </label></div>
+              </div>
+            </div>
+            <!-- 复选框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">复选框</label>
+              <div class="col-sm-8">
+                <select class="form-control">
+                  <option>请选择</option>
+                  <option>选项一</option>
+                  <option>选项二</option>
+                  <option>选项三</option>
+                  <option>选项四</option>
+                </select>
+              </div>
+            </div>
+            <!-- 不可编辑复选框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">不可编辑复选框</label>
+              <div class="col-sm-8">
+                <select class="form-control" disabled>
+                  <option>选项一</option>
+                  <option>选项二</option>
+                  <option>选项三</option>
+                  <option>选项四</option>
+                </select>
+              </div>
+            </div>
+            <!-- 文件上传 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">文件上传</label>
+              <div class="col-sm-8">
+                <input class="form-control-static" type="file">
+              </div>
+            </div>
+            <!-- 文件上传-拽托 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">文件上传</label>
+              <div class="col-sm-8">
+                <div id="my-awesome-dropzone" class="dropzone" action="form.html#">
+                  <div class="dropzone-previews"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 多行文本 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">多行文本框</label>
+              <div class="col-sm-8">
+                <textarea class="form-control" rows="10" placeholder="请输入"></textarea>
+              </div>
+            </div>
+            <!-- 富文本 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">富文本</label>
+              <div class="col-sm-8">
+                  <textarea  id="editor" name="editor" class="textarea" placeholder="请输入" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+              </div>
+            </div>
 
-            <!-- select -->
             <div class="form-group">
-              <label>Select</label>
-              <select class="form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Select Disabled</label>
-              <select class="form-control" disabled>
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-
-            <!-- Select multiple-->
-            <div class="form-group">
-              <label>Select Multiple</label>
-              <select multiple class="form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Select Multiple Disabled</label>
-              <select multiple class="form-control" disabled>
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
+              <label class="col-sm-5 control-label"></label>
+              <button type="submit" class="btn btn-primary col-sm-2 text-center">提交</button>
             </div>
 
           </form>
@@ -369,5 +383,41 @@
 <script src="dist/js/demo.js"></script>
 <!-- 我的 -->
 <script src="dist/js/admin.js"></script>
+<!-- DROPZONE -->
+<script src="plugins/dropzone/dropzone.js"></script>
+
+<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+        $("#editor").wysihtml5();
+
+        Dropzone.options.myAwesomeDropzone = {
+
+            autoProcessQueue: false,
+            uploadMultiple: false,
+            parallelUploads: 100,
+            maxFiles: 100,
+
+            // Dropzone settings
+            init: function() {
+                var myDropzone = this;
+
+                // this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                //     e.preventDefault();
+                //     e.stopPropagation();
+                //     myDropzone.processQueue();
+                // });
+                // this.on("sendingmultiple", function() {
+                // });
+                // this.on("successmultiple", function(files, response) {
+                // });
+                // this.on("errormultiple", function(files, response) {
+                // });
+            }
+
+        }
+
+
+</script>
+</script>
 </body>
 </html>
