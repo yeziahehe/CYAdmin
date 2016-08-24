@@ -19,6 +19,10 @@
   <link rel="stylesheet" href="plugins/dropzone/dropzone.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -149,14 +153,7 @@
         <li class="active treeview">
           <a href="">
             <i class="fa fa-file-text-o"></i> <span> 表单管理</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="form.html"><i class="fa fa-circle-o"></i><small> 基础表单</small></a></li>
-            <li><a href="form_advanced.html"><i class="fa fa-circle-o"></i><small> 高级表单</small></a></li>
-          </ul>
         </li>
       </ul>
     </section>
@@ -172,8 +169,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href=""><i class="fa fa-dashboard"></i> 首页</a></li>
-        <li><a href=""><i class="fa fa-dashboard"></i> 表单管理</a></li>
-        <li class="active"> 基础表单</li>
+        <li class="active"> 表单管理</li>
       </ol>
     </section>
 
@@ -183,7 +179,7 @@
       <!-- general form elements disabled -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title"> 基本表单</h3>
+          <h3 class="box-title"> 表单管理</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -281,6 +277,45 @@
                 </select>
               </div>
             </div>
+            <!-- 可搜索复选框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">可搜索复选框</label>
+              <div class="col-sm-8">
+                <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">请选择</option>
+                  <option>选项一</option>
+                  <option>选项二</option>
+                  <option disabled="disabled">不可点击选项</option>
+                  <option>选项三</option>
+                  <option>选项四</option>
+                </select>
+              </div>
+            </div>
+            <!-- 标签选择框 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">标签选择框</label>
+              <div class="col-sm-8">
+                <select class="form-control select2" multiple="multiple" data-placeholder="请选择标签" style="width: 100%;">
+                  <option>选项一</option>
+                  <option>选项二</option>
+                  <option>不可点击选项</option>
+                  <option>选项三</option>
+                  <option>选项四</option>
+                </select>
+              </div>
+            </div>
+            <!-- 日期 -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">日期</label>
+              <div class="col-sm-8">
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker">
+                </div>
+              </div>
+            </div>
             <!-- 文件上传 -->
             <div class="form-group">
               <label class="col-sm-2 control-label">文件上传</label>
@@ -327,7 +362,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  <footer class="main-footer clearfix">
     <div class="pull-right hidden-xs">
       <small>苏州倡予信息科技有限公司 技术支持</small>
     </div>
@@ -378,43 +413,41 @@
 <!-- ChartJS 1.0.1 -->
 <script src="plugins/chartjs/Chart.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<!-- <script src="dist/js/pages/dashboard2.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- 我的 -->
 <script src="dist/js/admin.js"></script>
 <!-- DROPZONE -->
 <script src="plugins/dropzone/dropzone.js"></script>
-
+<!-- Select2 -->
+<script src="plugins/select2/select2.full.min.js"></script>
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+
+<!-- <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script> -->
+
+
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <script>
-        $("#editor").wysihtml5();
 
-        Dropzone.options.myAwesomeDropzone = {
+  //Initialize Select2 Elements
+  $(".select2").select2();
+  $("#editor").wysihtml5();
+  //Date picker
+  $('#datepicker').datepicker({
+    autoclose: true
+  });
 
-            autoProcessQueue: false,
-            uploadMultiple: false,
-            parallelUploads: 100,
-            maxFiles: 100,
-
-            // Dropzone settings
-            init: function() {
-                var myDropzone = this;
-
-                // this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                //     e.preventDefault();
-                //     e.stopPropagation();
-                //     myDropzone.processQueue();
-                // });
-                // this.on("sendingmultiple", function() {
-                // });
-                // this.on("successmultiple", function(files, response) {
-                // });
-                // this.on("errormultiple", function(files, response) {
-                // });
-            }
-
-        }
+  Dropzone.options.myAwesomeDropzone = {
+      autoProcessQueue: false,
+      uploadMultiple: false,
+      parallelUploads: 100,
+      maxFiles: 100,
+      // Dropzone settings
+      init: function() {
+          var myDropzone = this;
+      }
+  }
 
 
 </script>
